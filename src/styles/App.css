@@ -117,3 +117,6 @@ body {
   transform: scaleY(1);
   transform-origin: bottom;
 }
+.show-shop-container span{
+  overflow: hidden;
+}

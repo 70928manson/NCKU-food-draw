@@ -4,18 +4,26 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';  //處理cors問題
 
 function App() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const [vages, setVages] = useState([]); //素
+  const [meats, setMeats] = useState([]);  //葷 吃肉肉
 
   useEffect(()=> {
     fetchData();
+    let length = data.length;
+    let tempVages = [];
+    let tempMeats = [];
+    for(let i = 0; i < length; i++) {
+      data[i][1] === 'yes' ? tempVages.push(data[i][0]) : tempMeats.push(data[i][0]);
+    }
+    setVages(tempVages);
+    setMeats(tempMeats);
   }, [])
 
   const fetchData = () => {
     axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_ID}/values/${process.env.REACT_APP_SHEET}?alt=json&key=${process.env.REACT_APP_KEY}`)
       .then((res) => {
-        console.log('res',typeof res);
         setData(res.data.values);
-        console.log('data: ', data);
       }).catch((res) => {
         console.log(res)
       })
@@ -34,11 +42,13 @@ function App() {
               <span>今天吃什麼呢</span>
             </h2>
           </div>
-          <p>{data[1]}</p>
           <h1>顯示區</h1>
-          <div>
-            {data.map((item) => {
-              return <li>{item[0]}</li>  //map need return something
+          <div className="show-shop-container">
+            {data.map((item, index) => {
+              if(index !== 0) {
+                return <h5><span>{item[0]}</span></h5>
+              }
+                //map need return something
             })}
           </div>
           <a href="#" className="btn-container" onClick={fetchData}>
