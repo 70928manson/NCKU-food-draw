@@ -10,8 +10,10 @@ function App() {
 
   const [test, setTest] = useState(true);
 
+  const [mapSrc, setMapSrc] = useState('');
+
   useEffect(()=> {
-    // fetchData();
+    fetchData();
   }, [])
 
   const fetchData = () => {
@@ -37,15 +39,50 @@ function App() {
 
         console.log('vages', vages);
         console.log('meats', meats);
-        if(test === true) {
-          setTest(false);
-        }
       }).catch((res) => {
         console.log(res)
       })
   }
+  const clickHandler = () => {
+    let randomNum; //亂數
+    let max, min; // 陣列的最大、小值
+    let text; // 結果
+
+    const chooseShop = (s) => {
+      //s參數是陣列
+      //取得隨機亂數
+      randomNum = () => {
+        max = s.length - 1;
+        min = 0;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      //第一個與亂數shop交換
+      let tempS = [...s];
+      tempS[0] = tempS.splice(randomNum(), 1, tempS[0])[0];
+      text = tempS[0];
+
+      if(s === vages) {
+        setVages(tempS);
+      }else {
+        setMeats(tempS);
+      }
+    }
+    vageCheck ? chooseShop(vages) : chooseShop(meats);
+
+    if(test === true) {
+      setTest(false);
+    }
+    const list = document.querySelectorAll('.show-shop-container > h5');
+    Array.prototype.forEach.call(list, item => item.classList.add('span'));
+    const duration = 2000; // 拉霸效果執行多久
+    setTimeout(() => {
+      // 停止拉霸動畫
+      Array.prototype.forEach.call(list, item => item.removeAttribute('class'));
+    }, duration);
+  }
 
   const vageCheckHandler = () => {
+    setTest(true);
     console.log('check');
     setVageCheck(!vageCheck);
   }
@@ -61,17 +98,17 @@ function App() {
           <h1>顯示區</h1>
           <div className="show-shop">
             <div className="overflow-hidden show-shop-container">
-              {vageCheck === true ? vages.map((item, index) => {return <h5 key={index}>{item}</h5>}) : meats.map((item, index) => {return <h5 key={index}>{item}</h5>})}
               {test ? <h5>今天要吃什麼</h5> : null}
+              {vageCheck === true ? vages.map((item, index) => {return <h5 key={index}>{item}</h5>}) : meats.map((item, index) => {return <h5 key={index}>{item}</h5>})}
             </div>
           </div>
-          <a href="#" className="btn-container" onClick={fetchData}>
+          <button className="btn-container" onClick={clickHandler}>
             <span></span>
             <span></span>
             <span></span>
             <span></span>
-            Button
-          </a>
+            點我熱血開抽
+          </button>
         </div>
 				<div className="checkbox">
 					<p className="vegetarian">Vegetarian?</p>
@@ -84,7 +121,9 @@ function App() {
 						</label>
 					</div> 
 				</div>
-        <div className="google-map"></div>
+        <div className="google-map">
+          <iframe loading="lazy" frameBorder="0" className="" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </section>
       <footer className="card-footer text-center">
         <p>© 2022 Manson. All Rights Reserved.</p>
