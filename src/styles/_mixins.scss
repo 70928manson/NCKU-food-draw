@@ -1,0 +1,35 @@
+@mixin smallDeviceSize {
+	@media only screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+#shop-title .span {
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+	-webkit-animation-name: spin;
+	animation-name: spin;
+	-webkit-animation-duration: 0.18s;
+	animation-duration: 0.18s;
+}
+
+/*拉霸動畫*/
+@-webkit-keyframes spin {
+    from {
+      top: 0;
+    }
+    to {
+      top: calc(-30px * 6);
+    }
+}
+  
+@keyframes spin {
+    from {
+      top: 0;
+    }
+    to {
+      top: calc(-30px * 6);
+    }
+}
