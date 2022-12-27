@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-food-draw/static/css/main.4518242c.css",
-    "main.js": "/react-food-draw/static/js/main.3ad7dccb.js",
-    "index.html": "/react-food-draw/index.html",
-    "main.4518242c.css.map": "/react-food-draw/static/css/main.4518242c.css.map",
-    "main.3ad7dccb.js.map": "/react-food-draw/static/js/main.3ad7dccb.js.map"
+    "main.css": "/react-redux-framer-todo/static/css/main.d913a7b0.css",
+    "main.js": "/react-redux-framer-todo/static/js/main.17b21f4e.js",
+    "index.html": "/react-redux-framer-todo/index.html",
+    "main.d913a7b0.css.map": "/react-redux-framer-todo/static/css/main.d913a7b0.css.map",
+    "main.17b21f4e.js.map": "/react-redux-framer-todo/static/js/main.17b21f4e.js.map"
   },
   "entrypoints": [
-    "static/css/main.4518242c.css",
-    "static/js/main.3ad7dccb.js"
+    "static/css/main.d913a7b0.css",
+    "static/js/main.17b21f4e.js"
   ]
 }
