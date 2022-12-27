@@ -1,8 +1,9 @@
 import React from 'react';
 
 import styles from '../styles/modules/lottery.module.scss';
+import '../styles/_mixins.scss'
 
-const AppLottery = ({vageCheck, vages, meats, clickHandler, test}) => {
+const AppLottery = ({ vageCheck, vages, meats, clickHandler, test, drawCheck }) => {
     return (
         <div className={styles.lottery}>
             <div className={styles.shop_container}>
@@ -11,12 +12,15 @@ const AppLottery = ({vageCheck, vages, meats, clickHandler, test}) => {
                     {vageCheck === true ? vages.map((item, index) => {return <h5 key={index}>{item}</h5>}) : meats.map((item, index) => {return <h5 key={index}>{item}</h5>})}
                 </div>
             </div>
-            <button className={styles.btn_container} onClick={clickHandler}>
+            <button className={drawCheck === false ? styles.btn_container : `${styles.btn_container} notAllow`} onClick={clickHandler}>
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                    點我熱血開抽
+                    {drawCheck === false 
+                      ? '點我熱血開抽'
+                      : <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+                    }
             </button>
         </div>
     );
