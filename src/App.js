@@ -132,7 +132,7 @@ function App() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1>美食抽抽樂</h1>
+        <h1>成大美食抽抽樂</h1>
       </header>
       <section className={styles.main_content}>
         <AppLottery vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} test={test}></AppLottery>
@@ -151,8 +151,8 @@ function App() {
             點我熱血開抽
           </button>
         </div> */}
-				<div className="">
-					<p className={styles.vegetarian}>Vegetarian?</p>
+				<div className={styles.vegetarian_container}>
+					<p className={styles.vegetarian_text}>Vegetarian ?</p>
 
 					{/*   素食   */}
 					<div className={styles.check}>
@@ -163,7 +163,7 @@ function App() {
 					</div> 
 				</div>
         <div className="">
-          <iframe ref={mapRef} loading="lazy" frameBorder="0" className="" width="450" height="250" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe ref={mapRef} loading="lazy" frameBorder="0" className="" width="585" height="325" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </section>
       <footer className="text-center">

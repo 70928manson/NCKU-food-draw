@@ -9,7 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Verdana;
+  font-family: 'Noto Sans TC', Verdana;
   background: linear-gradient(237deg, #10375c 48%, #143c63 85%, #27425d 100%);
 }
 
@@ -21,11 +21,16 @@ body {
   background: white;
   min-width: 440px;
   min-height: 320px;
+  padding: 10px;
 }
 
 .header {
   text-align: center;
   padding: 0.5rem 0;
+  h1 {
+    font-weight: 700;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
 }
 
 .main_content {
@@ -35,11 +40,19 @@ body {
   align-items: center;
 }
 
+.vegetarian_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 0;
+}
 /*素食按鈕*/
-.vegetarian {
+.vegetarian_text {
   padding-right: 2px;
   color: #689F38; /*#689F38 #d6751f*/
   text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-bottom: 0.1rem;
 }
 .toggle {
   position: relative;

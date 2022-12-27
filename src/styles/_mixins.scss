@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;700;900&display=swap');
+
 @mixin smallDeviceSize {
 	@media only screen and (max-width: 768px) {
 		@content;
