@@ -137,7 +137,7 @@ function App() {
       </header>
       <section className={styles.main_content}>
         <AppLottery vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} test={test} drawCheck={drawCheck}></AppLottery>
-        <VegetarianButton vegeCheckHandler={vegeCheckHandler}></VegetarianButton>
+        <VegetarianButton vageCheck={vageCheck} vegeCheckHandler={vegeCheckHandler}></VegetarianButton>
         <div className="">
           <iframe ref={mapRef} loading="lazy" frameBorder="0" className="" width="585" height="325" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>

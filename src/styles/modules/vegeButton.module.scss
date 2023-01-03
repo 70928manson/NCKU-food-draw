@@ -12,11 +12,18 @@
     font-family: 'Noto Sans TC', sans-serif;
     margin-bottom: 0.1rem;
   }
+  .not_vegetarian_text {
+    padding-right: 2px;
+    color:rgba(118, 117, 117, 0.5);
+    text-align: center;
+    font-family: 'Noto Sans TC', sans-serif;
+    margin-bottom: 0.1rem;
+  }
   .toggle {
     position: relative;
     display: inline-block;
-    width: 100px;
-    height: 54px;
+    width: 75px;
+    height: 40.5px;
   }
   .toggle input {
     display: none;
@@ -36,10 +43,10 @@
   .button:before {
     position: absolute;
     content: "";
-    height: 46px;
-    width: 46px;
-    left: 4px;
-    bottom: 4px;
+    height: 34.5px;
+    width: 34.5px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
     transition: 0.4s;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0px 4px 23px 0 rgba(0, 0, 0, 0.08), -2px 4px 4px 0 rgba(0, 0, 0, 0.1);
@@ -52,8 +59,8 @@
     box-shadow: 0 0 1px #2196F3;
   }
   input:checked + .button:before, input:checked + .button:after {
-    -webkit-transform: translateX(46px);
-            transform: translateX(46px);
+    -webkit-transform: translateX(34.5px);
+            transform: translateX(34.5px);
   }
   input:checked + .button:after {
     color: #689F38;  /*#689F38  #c16d23*/
@@ -69,13 +76,13 @@
     font-family: "FontAwesome";
     content: "\f18c"; /*f6c8*/
     position: absolute;
-    left: 4px;
-    bottom: 4px;
+    left: 3px;
+    bottom: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 46px;
-    width: 46px;
+    height: 34.5px;
+    width: 34.5px;
     font-size: 1.5rem;
     color: #ccc;
     transition: 0.4s;
