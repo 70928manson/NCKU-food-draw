@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from './styles/modules/app.module.scss';
 import './styles/_mixins.scss';
 
-import AppLottery from './components/AppLottery';
+import AppLottery from './components/lotteryContent';
 import VegetarianButton from './components/VegetarianButton';
 
 function App() {
@@ -139,7 +139,7 @@ function App() {
         <AppLottery vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} test={test} drawCheck={drawCheck}></AppLottery>
         <VegetarianButton vageCheck={vageCheck} vegeCheckHandler={vegeCheckHandler}></VegetarianButton>
         <div className="">
-          <iframe ref={mapRef} loading="lazy" frameBorder="0" className="" width="585" height="325" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe ref={mapRef} loading="lazy" frameBorder="0" className="mapSize" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </section>
       <footer className="text-center">

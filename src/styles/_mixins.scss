@@ -40,3 +40,12 @@
   pointer-events: none;
   cursor: default;
 }
+
+.mapSize {
+  width: 585px;
+  height: 325px;
+  @include smallDeviceSize{
+    width: 450px;
+    height: 300px;
+}
+}
