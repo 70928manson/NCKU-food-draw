@@ -6,6 +6,12 @@
 	}
 }
 
+@mixin phoneSize {
+  @media only screen and (max-width: 415px) {
+    @content
+  }
+}
+
 #shop-title .span {
 	-webkit-animation-iteration-count: infinite;
 	animation-iteration-count: infinite;
@@ -47,5 +53,9 @@
   @include smallDeviceSize{
     width: 450px;
     height: 300px;
-}
+  }
+  @include phoneSize(){
+    width: 400px;
+    height: 300px;
+  }
 }

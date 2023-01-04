@@ -20,8 +20,11 @@ body {
   border-radius: 7px;
   background: white;
   min-width: 440px;
-  min-height: 320px;
+  // min-height: 320px;
   padding: 10px;
+  @include smallDeviceSize{
+    min-width: 350px;
+  }
 }
 
 .header {
