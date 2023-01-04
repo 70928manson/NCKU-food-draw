@@ -1,0 +1,20 @@
+@import '../_mixins.scss';
+
+.map {
+    width: 100%;
+    iframe {
+        transition: all 0.5s ease;
+    }
+    .mapSize {
+        width: 585px;
+        height: 325px;
+        @include smallDeviceSize{
+          width: 450px;
+          height: 300px;
+        }
+        @include phoneSize(){
+          width: 100%;
+          height: 300px;
+        }
+    }
+}

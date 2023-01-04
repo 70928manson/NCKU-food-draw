@@ -1,8 +1,11 @@
+@import '../mixins';
+
 .vegetarian_container {
     display: flex;
     align-items: center;
     flex-direction: column;
     margin: 10px 0;
+    font-size: 1rem;
   }
   /*素食按鈕*/
   .vegetarian_text {
@@ -86,4 +89,4 @@
     font-size: 1.5rem;
     color: #ccc;
     transition: 0.4s;
-  }
+}

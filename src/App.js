@@ -4,8 +4,9 @@ import axios from 'axios';
 import styles from './styles/modules/app.module.scss';
 import './styles/_mixins.scss';
 
-import AppLottery from './components/lotteryContent';
-import VegetarianButton from './components/VegetarianButton';
+import LotteryContent from './components/lotteryContent';
+import VegetarianContent from './components/VegetarianButton';
+import MapContent from './components/MapContent';
 
 function App() {
   const [vages, setVages] = useState([]); //素
@@ -60,7 +61,6 @@ function App() {
   }
 
   const clickHandler = () => {
-    console.log('123', vages);
     let randomNum; //亂數
     let max, min; // 陣列的最大、小值
     let vageJudge = true; // 結果
@@ -108,7 +108,6 @@ function App() {
       setTest(false);
     }
     const list = document.querySelectorAll('#shop-title > h5');
-    console.log('12/20 list', list, styles.span);
     Array.prototype.forEach.call(list, item => item.classList.add(`span`));
     const duration = 1500; // 拉霸效果執行多久
     setTimeout(() => {
@@ -126,7 +125,6 @@ function App() {
 
   const vegeCheckHandler = () => {
     setTest(true);
-    console.log('check');
     setVageCheck(!vageCheck);
   }
 
@@ -136,11 +134,9 @@ function App() {
         <h1>成大美食抽抽樂</h1>
       </header>
       <section className={styles.main_content}>
-        <AppLottery vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} test={test} drawCheck={drawCheck}></AppLottery>
-        <VegetarianButton vageCheck={vageCheck} vegeCheckHandler={vegeCheckHandler}></VegetarianButton>
-        <div className="">
-          <iframe ref={mapRef} loading="lazy" frameBorder="0" className="mapSize" src="" allowFullScreen referrerPolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        <LotteryContent vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} test={test} drawCheck={drawCheck}></LotteryContent>
+        <VegetarianContent vageCheck={vageCheck} vegeCheckHandler={vegeCheckHandler}></VegetarianContent>
+        <MapContent mapRef={mapRef}></MapContent>
       </section>
       <footer className="text-center">
         <p>© 2022 Manson. All Rights Reserved.</p>
