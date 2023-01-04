@@ -6,32 +6,32 @@
     flex-direction: column;
     margin: 10px 0;
     font-size: 1rem;
+    /*素食按鈕*/
+    .vegetarian_text {
+      padding-right: 2px;
+      color: #689F38; /*#689F38 #d6751f*/
+      text-align: center;
+      font-family: 'Noto Sans TC', sans-serif;
+      margin-bottom: 0.1rem;
+    }
+    .not_vegetarian_text {
+      padding-right: 2px;
+      color:rgba(118, 117, 117, 0.5);
+      text-align: center;
+      font-family: 'Noto Sans TC', sans-serif;
+      margin-bottom: 0.1rem;
+    }
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 75px;
+      height: 40.5px;
+      input {
+        display: none;
+      }
+    }
   }
-  /*素食按鈕*/
-  .vegetarian_text {
-    padding-right: 2px;
-    color: #689F38; /*#689F38 #d6751f*/
-    text-align: center;
-    font-family: 'Noto Sans TC', sans-serif;
-    margin-bottom: 0.1rem;
-  }
-  .not_vegetarian_text {
-    padding-right: 2px;
-    color:rgba(118, 117, 117, 0.5);
-    text-align: center;
-    font-family: 'Noto Sans TC', sans-serif;
-    margin-bottom: 0.1rem;
-  }
-  .toggle {
-    position: relative;
-    display: inline-block;
-    width: 75px;
-    height: 40.5px;
-  }
-  .toggle input {
-    display: none;
-  }
-  
+
   .button {
     position: absolute;
     cursor: pointer;
@@ -42,6 +42,12 @@
     background-color: #ccc;
     transition: 0.4s;
     box-shadow: 0 2px 1px 0 rgba(255, 255, 255, 0.5), inset 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  }
+  .disabled {
+    opacity: 0.5;
+    span {
+      cursor: default;
+    }
   }
   .button:before {
     position: absolute;
@@ -89,4 +95,4 @@
     font-size: 1.5rem;
     color: #ccc;
     transition: 0.4s;
-}
+  }

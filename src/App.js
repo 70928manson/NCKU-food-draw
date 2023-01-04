@@ -4,7 +4,7 @@ import axios from 'axios';
 import styles from './styles/modules/app.module.scss';
 import './styles/_mixins.scss';
 
-import LotteryContent from './components/lotteryContent';
+import LotteryContent from './components/LotteryContent';
 import VegetarianContent from './components/VegetarianButton';
 import MapContent from './components/MapContent';
 
@@ -15,10 +15,8 @@ function App() {
   const [vageSrc, setVageSrc] = useState([]);
   const [meatSrc, setMeatSrc] = useState([]);
 
-
+  const [initText, setInitText] = useState(true);  //TODO: 改成判斷vages | meats 有沒有東西
   const [vageCheck, setVageCheck] = useState(true);
-
-  const [test, setTest] = useState(true);
   const [drawCheck, setDrawCheck] = useState(false);
   const mapRef = useRef()
 
@@ -104,8 +102,8 @@ function App() {
 
     vageCheck ? chooseShop(vages) : chooseShop(meats);
 
-    if(test === true) {
-      setTest(false);
+    if(initText === true) {
+      setInitText(false);
     }
     const list = document.querySelectorAll('#shop-title > h5');
     Array.prototype.forEach.call(list, item => item.classList.add(`span`));
@@ -124,7 +122,7 @@ function App() {
   }
 
   const vegeCheckHandler = () => {
-    setTest(true);
+    setInitText(true);
     setVageCheck(!vageCheck);
   }
 
@@ -134,8 +132,8 @@ function App() {
         <h1>成大美食抽抽樂</h1>
       </header>
       <section className={styles.main_content}>
-        <LotteryContent vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} test={test} drawCheck={drawCheck}></LotteryContent>
-        <VegetarianContent vageCheck={vageCheck} vegeCheckHandler={vegeCheckHandler}></VegetarianContent>
+        <LotteryContent vageCheck={vageCheck} vages={vages} meats={meats} clickHandler={clickHandler} initText={initText} drawCheck={drawCheck}></LotteryContent>
+        <VegetarianContent vageCheck={vageCheck} vegeCheckHandler={vegeCheckHandler} drawCheck={drawCheck}></VegetarianContent>
         <MapContent mapRef={mapRef}></MapContent>
       </section>
       <footer className="text-center">
