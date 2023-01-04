@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-food-draw/static/css/main.4ee1c16a.css",
+    "main.css": "/react-food-draw/static/css/main.060d1bcd.css",
     "main.js": "/react-food-draw/static/js/main.4d89851a.js",
     "index.html": "/react-food-draw/index.html",
-    "main.4ee1c16a.css.map": "/react-food-draw/static/css/main.4ee1c16a.css.map",
+    "main.060d1bcd.css.map": "/react-food-draw/static/css/main.060d1bcd.css.map",
     "main.4d89851a.js.map": "/react-food-draw/static/js/main.4d89851a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ee1c16a.css",
+    "static/css/main.060d1bcd.css",
     "static/js/main.4d89851a.js"
   ]
 }
