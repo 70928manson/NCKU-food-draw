@@ -9,9 +9,11 @@ import VegetarianContent from './components/VegetarianButton';
 import MapContent from './components/MapContent';
 
 function App() {
-  const [vages, setVages] = useState([]); //素
-  const [meats, setMeats] = useState([]);  //葷 吃肉肉
+  //資料分為素的與葷的
+  const [vages, setVages] = useState([]);
+  const [meats, setMeats] = useState([]);
 
+  //
   const [vageSrc, setVageSrc] = useState([]);
   const [meatSrc, setMeatSrc] = useState([]);
 
@@ -24,26 +26,21 @@ function App() {
     fetchData();
   }, [])
 
-  const fetchData = () => {
-    axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_ID}/values/${process.env.REACT_APP_SHEET}?alt=json&key=${process.env.REACT_APP_KEY}`)
+  const fetchData = async () => {
+    await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_ID}/values/${process.env.REACT_APP_SHEET}?alt=json&key=${process.env.REACT_APP_KEY}`)
       .then((res) => {
         let tempData = res.data.values;
-
         let length = tempData.length;
 
-        let tempVages = [];
-        let tempVageSrc = [];
-        let tempMeats = [];
-        let tempMeatSrc = [];
+        let tempVages=[], tempVageSrc=[];
+        let tempMeats=[], tempMeatSrc = [];
+
         for(let i =0; i < length; i++) {
           if(tempData[i][0] !== 'shops') {
-            tempData[i][1] === 'yes' ? tempVages.push(tempData[i][0]) : tempMeats.push(tempData[i][0]);
+            tempData[i][1] === 'yes' ? tempVages.push(tempData[i][0]): tempMeats.push(tempData[i][0]);
             tempData[i][1] === 'yes' ? tempVageSrc.push(tempData[i][3]) : tempMeatSrc.push(tempData[i][3]);
           }
         }
-        console.log('tempVages', tempVages);
-        console.log('tempMeats', tempMeats);
-
         setVages(tempVages);
         setVageSrc(tempVageSrc);
 
@@ -53,48 +50,35 @@ function App() {
         console.log('vages', vages);
         console.log('meats', meats);
 
-      }).catch((res) => {
-        console.log(res)
+      }).catch((err) => {
+        console.log(err)
       })
   }
 
   const clickHandler = () => {
-    let randomNum; //亂數
-    let max, min; // 陣列的最大、小值
-    let vageJudge = true; // 結果
-
-    let src; //fix useState
+    let src;
 
     setDrawCheck(true);
 
     const chooseShop = (shop) => {
-      //s參數是陣列
-      //取得隨機亂數
-      randomNum = () => {
-        max = shop.length - 1;
-        min = 0;
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-      //第一個與亂數shop交換
-      let tempShop = [...shop];
-      let tempRandomNum = randomNum();
-      tempShop[0] = tempShop.splice(tempRandomNum, 1, tempShop[0])[0];
+      let randomNum = getRandomNum(shop);
+      shop[0] = shop.splice(randomNum, 1, shop[0])[0];
 
       if(shop === vages) {
-        vageJudge = true;
-        setVages(tempShop);
+        setVages(shop);
+
         //google map
         let tempVageSrc = [...vageSrc];
-        tempVageSrc[0] = tempVageSrc.splice(tempRandomNum, 1, tempVageSrc[0])[0];
+        tempVageSrc[0] = tempVageSrc.splice(randomNum, 1, tempVageSrc[0])[0];
         //setState更新的值下一次render才會出來，無法使用vageSrc[0]，因此用src變數去記
         setVageSrc(tempVageSrc);
         src = tempVageSrc[0];
       }else {
-        vageJudge = false;
-        setMeats(tempShop);
+        setMeats(shop);
+
         //google map
         let tempMeatSrc = [...meatSrc];
-        tempMeatSrc[0] = tempMeatSrc.splice(tempRandomNum, 1, tempMeatSrc[0])[0];
+        tempMeatSrc[0] = tempMeatSrc.splice(randomNum, 1, tempMeatSrc[0])[0];
         setMeatSrc(tempMeatSrc);
         src = tempMeatSrc[0];
       }
@@ -105,6 +89,8 @@ function App() {
     if(initText === true) {
       setInitText(false);
     }
+
+    //todo: set google map
     const list = document.querySelectorAll('#shop-title > h5');
     Array.prototype.forEach.call(list, item => item.classList.add(`span`));
     const duration = 1500; // 拉霸效果執行多久
@@ -112,11 +98,7 @@ function App() {
       // 停止拉霸動畫
       Array.prototype.forEach.call(list, item => item.removeAttribute('class'));
       // map.src = `https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_KEY}&q=${text}`;
-      if(vageJudge) {
-        mapRef.current.src = src;
-      }else {
-        mapRef.current.src = src;
-      }
+      mapRef.current.src = src;
       setDrawCheck(false);
     }, duration);
   }
@@ -124,6 +106,14 @@ function App() {
   const vegeCheckHandler = () => {
     setInitText(true);
     setVageCheck(!vageCheck);
+  }
+
+  //取得隨機亂數
+  const getRandomNum = (shop) => {
+    // 陣列的最大、小值
+    let max = shop.length - 1;
+    let min = 0;
+      return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   return (
