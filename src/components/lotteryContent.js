@@ -15,7 +15,14 @@ const AppLottery = ({ vageCheck, vages, meats, clickHandler, initText, drawCheck
                     }
                 </div>
             </div>
-            <button className={drawCheck === false ? styles.btn_container : `${styles.btn_container} ${styles.notAllow}`} onClick={clickHandler}>
+            <button 
+              className={
+                drawCheck === false 
+                ? styles.btn_container 
+                : `${styles.btn_container} ${styles.notAllow}`
+              } 
+              onClick={clickHandler}
+            >
                 <span></span>
                 <span></span>
                 <span></span>
