@@ -8,7 +8,7 @@ const AppLottery = ({ vageCheck, vages, meats, clickHandler, initText, drawCheck
         <div className={styles.lottery}>
             <div className={styles.shop_container}>
                 <div className={styles.shop_title} id="shop-title">
-                    {initText ? <h5>今天要吃什麼</h5> : null}
+                    {initText && <h5>今天要吃什麼</h5>}
                     {vageCheck === true 
                         ? vages.map((item, index) => {return <h5 key={index}>{item}</h5>}) 
                         : meats.map((item, index) => {return <h5 key={index}>{item}</h5>})

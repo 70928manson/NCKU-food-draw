@@ -8,6 +8,11 @@ import LotteryContent from './components/LotteryContent';
 import VegetarianContent from './components/VegetarianButton';
 import MapContent from './components/MapContent';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { decrement, increment } from './slices/drawSlice';
+
+import { getWelcomeConsole } from './utils/haveFun';
+
 function App() {
   //店家資料分為素的與葷的
   const [vages, setVages] = useState([]);
@@ -25,16 +30,18 @@ function App() {
   const mapRef = useRef();
 
   let data = [];
+  let src = "";
 
   useEffect(()=> {
+    setDrawCheck(true);
     fetchData();
     getWelcomeConsole();
+    setDrawCheck(false)
   }, [])
 
   const fetchData = async () => {
     await axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${process.env.REACT_APP_ID}/values/${process.env.REACT_APP_SHEET}?alt=json&key=${process.env.REACT_APP_KEY}`)
       .then((res) => {
-        setDrawCheck(true);
         data = res.data.values;
 
         let tempVages=[], tempVageSrc=[];
@@ -51,15 +58,12 @@ function App() {
 
         setMeats(tempMeats);
         setMeatSrc(tempMeatSrc);
-
-        setDrawCheck(false);
       }).catch((err) => {
         console.log(err)
       })
   }
 
   const clickHandler = () => {
-    let src = "";
     let randomNum;
 
     //避免使用者重複點擊抽獎按鈕
@@ -79,6 +83,12 @@ function App() {
       src = getShopSrc(meats, randomNum);
     }
 
+    //避免未抓取到src
+    if(!src) {
+      setDrawCheck(false);
+      return
+    }
+    
     getGoogleMapContent(src);
   }
 
@@ -94,6 +104,7 @@ function App() {
 
   const getShopSrc = (shops, randomNum) => {
     let src = "";
+
     if(shops === vages) {
       //google map
       let tempVageSrc = [...vageSrc];
@@ -117,8 +128,8 @@ function App() {
     const duration = 1500; // 拉霸效果執行多久
     setTimeout(() => {
       // 停止拉霸動畫
-      Array.prototype.forEach.call(list, item => item.removeAttribute('class'));
       mapRef.current.src = src;
+      Array.prototype.forEach.call(list, item => item.removeAttribute('class'));
       setDrawCheck(false);
     }, duration);
   }
@@ -134,10 +145,6 @@ function App() {
     let max = shop.length - 1;
     let min = 0;
       return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  const getWelcomeConsole = () => {
-    console.log('%c千萬別點進來 https://www.youtube.com/watch?v=dQw4w9WgXcQ','color: red; font-size: 18px;');
   }
 
   return (
