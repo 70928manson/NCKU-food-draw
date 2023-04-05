@@ -3,15 +3,14 @@ import React, { useEffect } from 'react';
 import styles from "../styles/modules/map.module.scss";
 import { useSelector } from 'react-redux';
 
-const MapContent = ({ mapRef, data, setDrawCheck, initText, vageCheck }) => {
+const MapContent = ({ mapRef, initText, vageCheck }) => {
   const { mapSrc, vageMapSrc } = useSelector((state) => state.draw);
+  
   useEffect(() => {
     if (!initText) {
-      console.log(vageCheck);
       if(vageCheck) {
         getGoogleMapContent(vageMapSrc[0])
       }else if(!vageCheck) {
-        console.log("hihi");
         getGoogleMapContent(mapSrc[0])
       }
     }

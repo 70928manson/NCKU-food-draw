@@ -14,7 +14,6 @@ const AppLottery = ({ vageCheck, data, clickHandler, initText, drawCheck }) => {
 
     useEffect(() => {
         if (data) {  
-            console.log("store", store);
             const shopData = data.values;
             for(let i =0; i < shopData.length; i++) {
                 if(shopData[i][0] !== 'shops') {
