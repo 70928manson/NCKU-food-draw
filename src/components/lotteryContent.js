@@ -31,6 +31,7 @@ const AppLottery = ({ vageCheck, data, clickHandler, initText, drawCheck }) => {
             dispatch(setStoreSrc(allSrc));
             
             dispatch(setVageStoreSrc(vageSrc));
+            console.log("all Shop", allShops);
         }
     }, [data])
 
