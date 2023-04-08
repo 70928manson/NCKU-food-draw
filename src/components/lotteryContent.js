@@ -31,7 +31,6 @@ const AppLottery = ({ vageCheck, data, clickHandler, initText, drawCheck }) => {
             dispatch(setStoreSrc(allSrc));
             
             dispatch(setVageStoreSrc(vageSrc));
-            console.log("all Shop", allShops);
         }
     }, [data])
 
@@ -63,6 +62,9 @@ const AppLottery = ({ vageCheck, data, clickHandler, initText, drawCheck }) => {
                       : <i className="fa-solid fa-spinner fa-spin-pulse"></i>
                     }
             </button>
+            {store.map((item, index) => {
+                return (<h5>{item}</h5>)
+            })}
         </div>
     );
 };
