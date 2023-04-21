@@ -14,6 +14,7 @@ const AppLottery = ({ vageCheck, data, clickHandler, initText, drawCheck }) => {
 
     useEffect(() => {
         if (data) {  
+            console.log("yoyo data", data);
             const shopData = data.values;
             for(let i =0; i < shopData.length; i++) {
                 if(shopData[i][0] !== 'shops') {
@@ -62,9 +63,6 @@ const AppLottery = ({ vageCheck, data, clickHandler, initText, drawCheck }) => {
                       : <i className="fa-solid fa-spinner fa-spin-pulse"></i>
                     }
             </button>
-            {store.map((item, index) => {
-                return (<h5>{item}</h5>)
-            })}
         </div>
     );
 };
