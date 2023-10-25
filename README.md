@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# 成大美食搜搜樂 - 今天吃什麼～？
+
+不知道吃什麼嘛，快來抽好吃的美食吧～～
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
