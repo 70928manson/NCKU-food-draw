@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-food-draw/static/css/main.2ac44bc6.css",
-    "main.js": "/react-food-draw/static/js/main.bc8b6cb0.js",
-    "index.html": "/react-food-draw/index.html",
-    "main.2ac44bc6.css.map": "/react-food-draw/static/css/main.2ac44bc6.css.map",
-    "main.bc8b6cb0.js.map": "/react-food-draw/static/js/main.bc8b6cb0.js.map"
+    "main.css": "/NCKU-food-draw/static/css/main.b6827b37.css",
+    "main.js": "/NCKU-food-draw/static/js/main.3a7f6425.js",
+    "index.html": "/NCKU-food-draw/index.html",
+    "main.b6827b37.css.map": "/NCKU-food-draw/static/css/main.b6827b37.css.map",
+    "main.3a7f6425.js.map": "/NCKU-food-draw/static/js/main.3a7f6425.js.map"
   },
   "entrypoints": [
-    "static/css/main.2ac44bc6.css",
-    "static/js/main.bc8b6cb0.js"
+    "static/css/main.b6827b37.css",
+    "static/js/main.3a7f6425.js"
   ]
 }
