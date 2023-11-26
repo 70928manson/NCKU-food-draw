@@ -1,10 +1,9 @@
 # 成大美食抽抽樂
-
-今天吃什麼～？
-
-台南作為美食府城，有很多好吃的東東
-
-不知道吃什麼的話，就快來開抽吧～～
+> 今天吃什麼～？
+>
+>台南作為美食府城，有很多好吃的東東
+>
+>不知道吃什麼的話，就快來開抽吧～～
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
